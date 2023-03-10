@@ -48,6 +48,6 @@ module.exports = {
             .then((user) => 
                 !user
                     ? res.status(404).json({ message: 'no user exists'})
-                    : )
+                    : res.json(user) )
     }
 }

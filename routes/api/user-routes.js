@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const User = require("../../models/User")
-// const {
-//     //getUsers,
-//     getSingleUser,
-//     createUser,
-//     updateUser,
-//     removeUser
-// } = require('../../controllers/user-controller')
+const {
+    //getUsers,
+    getSingleUser,
+    createUser,
+    updateUser,
+    removeUser
+} = require('../../controllers/user-controller')
 
 
 // TODO: Move getUsers to controllers and re-import
@@ -23,9 +23,9 @@ router.route('/')
     .get(getUsers)
     .post(createUser);
 
-// router.route('/:userId')
-//     .get(getSingleUser)
-//     .delete(deleteUser);
+router.route('/:userId')
+    .get(getSingleUser)
+    .delete(deleteUser);
 
 // router.route()
 
