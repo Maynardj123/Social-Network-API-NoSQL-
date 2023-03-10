@@ -21,7 +21,7 @@ const User = require("../../models/User")
 
 router.route('/')
     .get(getUsers)
-    //.post(createUser);
+    .post(createUser);
 
 // router.route('/:userId')
 //     .get(getSingleUser)
