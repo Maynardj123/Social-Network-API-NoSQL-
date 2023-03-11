@@ -51,8 +51,19 @@ module.exports = {
                     : res.json(thought)
             )
             .catch((err) => res.status(500).json(err))
-}
+    },
 
-
-// thought delete
+    // thought delete
+    deleteThought(req,res) {
+        Thought.findOneAndDelete({ _id: req.params.thoughtId})
+            .then((thought) =>
+                !thought
+                    ? res.status(404).json({ message: 'No thought with that ID'})
+                    // could be wrong below with connecting reactions
+                    // : User.deleteMany({ _id: { $in: thought.reactions}})
+                    : res.json(thought)
+            )
+            .then(() => res.json({ message: 'thought deleted '}))
+            .catch((err) => res.status(500).json(err))
+    }
 }
