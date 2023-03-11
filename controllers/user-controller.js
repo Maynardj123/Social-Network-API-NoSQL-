@@ -48,6 +48,20 @@ module.exports = {
             .then((user) => 
                 !user
                     ? res.status(404).json({ message: 'no user exists'})
-                    : res.json(user) )
+                    : Thought.findOneAndUpdate(
+                        { user: req.params.userId},
+                        { $pull: { user: req.params.userId}},
+                        { new: true}
+                    )
+            )
+            .then((thought) =>
+                !thought
+                    ?res.status(404).json({ message: 'user deleted, but no thoughts found'})
+                    :res.json({ message: 'user is deleted'})
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err)
+            })
     }
 }
