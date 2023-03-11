@@ -25,7 +25,7 @@ router.route('/')
 
 router.route('/:userId')
     .get(getSingleUser)
-    .delete(deleteUser);
+    .delete(removeUser)
 
 // router.route()
 
