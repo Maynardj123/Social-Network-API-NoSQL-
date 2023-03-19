@@ -4,7 +4,7 @@ module.exports = {
     // this will grab all the current thoughts and display them
     getThoughts(req,res) {
         Thought.find()
-            .then((thought) => res.json(thought))
+            .then((thoughts) => res.json(thoughts))
             .catch((err) => res.status(500).json(err))
     },
     // this will grab a single thought and display it
@@ -65,5 +65,47 @@ module.exports = {
             )
             .then(() => res.json({ message: 'thought deleted '}))
             .catch((err) => res.status(500).json(err))
+    },
+
+    // create reaction
+    createReaction(req,res) {
+        var thoughtId = req.params.thoughtId
+       // console.log(thoughtId)
+        Thought.findOneAndUpdate({ _id: thoughtId}, {
+
+            $push:  { reactions: {
+                reactionBody: req.body.text,
+                username: req.body.username
+            }}
+        }, {new:true}).then((found)=>{
+            if(!found) {
+             res.status(500).json({error:"Can't find that thought by ID!"})
+            } else {
+                res.status(200).json({added:found})
+            }
+        })
+        .catch((err) => res.status(500).json(err))
     }
+
+
+    // d3elete reaction
+    // deleteReaction(req,res) {
+    //     Thought.findOneAndUpdate(
+    //         {_id: req.params.thoughtId},
+    //         { $pull: { reaction: { thoughtId: req.params.thoughtId}}},
+    //         {runValidators: true, new: true}
+    //     )
+    //     .then((thought) =>
+    //         !thought
+    //         ? res
+    //             .status(404)
+    //             .json({ message: 'No thought found with that id'})
+    //         : res.json(thought)
+    //         )
+    //         .catch((err) => res.status(500).json(err))
+    // }
 }
+
+
+
+// res.json({ message: thoughtId})
