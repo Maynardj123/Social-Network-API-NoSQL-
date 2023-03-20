@@ -88,7 +88,7 @@ module.exports = {
     }
 
 
-    // d3elete reaction
+    // delete reaction
     // deleteReaction(req,res) {
     //     Thought.findOneAndUpdate(
     //         {_id: req.params.thoughtId},
