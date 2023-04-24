@@ -1,6 +1,11 @@
 # challenge-18
 NoSQL: Social Network API
 
+![GitHub language count](https://img.shields.io/github/languages/count/Maynardj123/challenge-18?style=flat-square)
+![GitHub top language](https://img.shields.io/github/languages/top/Maynardj123/challenge-18?color=green&style=flat-square)
+![GitHub repo size](https://img.shields.io/github/repo-size/Maynardj123/challenge-18?color=yellow&style=flat-square)
+![GitHub](https://img.shields.io/github/license/Maynardj123/challenge-18?color=orange&style=flat-square)
+
 ## Description
 I built this in order to get a better understanding on using no SQL, schemas, and routes. My motivation was to learn more on how to use insomnia. 
 
